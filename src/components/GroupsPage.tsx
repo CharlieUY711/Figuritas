@@ -3,20 +3,29 @@ import { GROUPS } from "../data/groups";
 import GroupsTable from "./GroupsTable";
 
 export default function GroupsPage() {
+  const [fwc, setFWC] = useState(Array(8).fill(false));
   const [avance, setAvance] = useState(0);
 
   const goLeft = () => {};
   const goRight = () => {};
 
+  const toggleFWC = (index) => {
+    setFWC((prev) => {
+      const copy = [...prev];
+      copy[index] = !copy[index];
+      return copy;
+    });
+  };
+
   const styles = {
     container: {
-      backgroundColor: "#001F3F",
+      backgroundColor: "#024A86",
       minHeight: "100vh",
       padding: 20,
       color: "white",
     },
     head: {
-      backgroundColor: "rgba(0, 150, 255, 0.25)",
+      backgroundColor: "#024A86",
       padding: "10px 20px",
       borderRadius: 12,
       display: "flex",
@@ -48,6 +57,29 @@ export default function GroupsPage() {
       fontSize: 16,
       opacity: 0.8,
     },
+
+    /* NUEVO: contenedor de FWC */
+    fwcContainer: {
+      width: "100%",
+      display: "grid",
+      gridTemplateColumns: "repeat(8, 1fr)",
+      gap: "6px",
+      marginBottom: 20,
+    },
+
+    fwcButton: {
+      height: "42px",
+      borderRadius: "6px",
+      border: "1px solid #FF7A00",
+      fontSize: "14px",
+      fontWeight: "bold",
+      cursor: "pointer",
+      transition: "0.15s",
+      background: "transparent",
+      color: "#808080",
+      boxShadow: "2px 2px 4px #0005",
+    },
+
     groupsGrid: {
       display: "grid",
       gridTemplateColumns: "repeat(3, 1fr)",
@@ -69,12 +101,30 @@ export default function GroupsPage() {
         <button style={styles.navBtn} onClick={goRight}>➡</button>
       </div>
 
-      {/* Figuritas especiales */}
-      <div style={{ marginBottom: 20 }}>
-        ⭐ ⭐ ⭐
+      {/* 🔥 FIGURITAS ESPECIALES — AHORA SÍ, LOS 8 BOTONES */}
+      <div style={styles.fwcContainer}>
+        {Array.from({ length: 8 }, (_, i) => {
+          const active = fwc[i];
+          return (
+            <button
+              key={i}
+              onClick={() => toggleFWC(i)}
+              style={{
+                ...styles.fwcButton,
+                background: active ? "#FF7A00" : "transparent",
+                color: active ? "white" : "#FF7A00",
+                boxShadow: active
+                  ? "inset 2px 2px 4px #333"
+                  : "2px 2px 4px #0005",
+              }}
+            >
+              FWC {i + 1}
+            </button>
+          );
+        })}
       </div>
 
-      {/* AHORA SÍ: tus grupos reales */}
+      {/* GRUPOS */}
       <div style={styles.groupsGrid}>
         {GROUPS.map((group) => (
           <GroupsTable key={group.letter} group={group} />

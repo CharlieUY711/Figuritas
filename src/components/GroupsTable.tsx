@@ -69,12 +69,12 @@ function TeamRow({ team }) {
 const styles = {
   /* CONTENEDOR DEL GRUPO */
   groupContainer: {
-    background: "#111",
+    background: "#109DFA",
     borderRadius: "6px",
-    padding: "10px",
+    padding: "6px",
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+    gap: "8px",
   },
 
   /* TÍTULO DEL GRUPO */
@@ -127,7 +127,7 @@ const styles = {
   stickers: {
     display: "grid",
     gridTemplateColumns: "repeat(20, 1fr)",
-    gap: "3px",
+    gap: "2px",
     flexGrow: 1,
   },
 

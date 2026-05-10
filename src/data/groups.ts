@@ -4,7 +4,7 @@ export const GROUPS = [
     teams: [
       { name: "México", code: "MEX", stickers: gen() },
       { name: "Sudáfrica", code: "RSA", stickers: gen() },
-      { name: "República de Corea", code: "KOR", stickers: gen() },
+      { name: "Rep. de Corea", code: "KOR", stickers: gen() },
       { name: "Chequia", code: "CZE", stickers: gen() },
     ],
   },
@@ -13,7 +13,7 @@ export const GROUPS = [
     letter: "B",
     teams: [
       { name: "Canadá", code: "CAN", stickers: gen() },
-      { name: "Bosnia y Herzegovina", code: "BIH", stickers: gen() },
+      { name: "Bosnia y Her.", code: "BIH", stickers: gen() },
       { name: "Catar", code: "QAT", stickers: gen() },
       { name: "Suiza", code: "SUI", stickers: gen() },
     ],
